@@ -1,0 +1,39 @@
+name: Generate esp-idf Component
+
+on:
+  push:
+    branch:
+      - 'develop_esp32_integrate'
+
+jobs:
+  generate-component:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout BTStack
+        uses: actions/checkout@v2
+        with:
+          ref: develop_esp32_integrate
+          fetch-depth: 0 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Intergrate
+        run: |
+          pushd port/esp32
+          export IDF_PATH=mock_idf
+          mkdir -p mock_idf/components
+          python integrate_btstack.py
+          rm -rf components
+          rm -rf __pycache__
+          mv mock_idf/components components
+          popd
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'SalimTerryLi'
+          git config --global user.email 'SalimTerryLi@users.noreply.github.com'
+          git checkout -b generated_components
+          git add .
+          git commit -m "Generated components"
+          git push -f --set-upstream origin generated_components
