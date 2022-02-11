@@ -71,7 +71,7 @@ void es8388_read_all_regs()
     for (int i = 0; i < 50; i++) {
         uint8_t reg = 0;
         es8388_read_reg(i, &reg);
-        ets_printf("%x: %x\n", i, reg);
+        printf("%x: %x\n", i, reg);
     }
 }
 
@@ -351,7 +351,7 @@ void es8388_pa_power(bool enable)
 {
     gpio_config_t  io_conf;
     memset(&io_conf, 0, sizeof(io_conf));
-    io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
+    io_conf.intr_type = GPIO_INTR_DISABLE;
     io_conf.mode = GPIO_MODE_OUTPUT;
     io_conf.pin_bit_mask = 1UL << GPIO_NUM_21;
     io_conf.pull_down_en = 0;

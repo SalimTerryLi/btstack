@@ -1,0 +1,4 @@
+dependencies:
+  idf: ">=4.4"
+  btstack:
+    git: https://github.com/SalimTerryLi/btstack
