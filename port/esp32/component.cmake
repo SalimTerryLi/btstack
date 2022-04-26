@@ -7,6 +7,7 @@ set(include_dirs "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/bluedroid/decoder/includ
                  "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/bluedroid/encoder/include"
                  "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/hxcmod-player"
                  "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/hxcmod-player/mods"
+                 "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/lc3-google/include"
                  "${IDF_PATH}/components/lwip/lwip/src/include"
                  "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/lwip/dhcp-server"
                  "${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/md5"
